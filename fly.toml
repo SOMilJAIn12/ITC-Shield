@@ -1,0 +1,23 @@
+# Fly.io: fly launch --copy-config --name itc-shield ; fly secrets set GROQ_API_KEY=... ; fly deploy
+app = "itc-shield"
+primary_region = "bom"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "8080"
+  LLM_PROVIDER = "groq"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    method = "GET"
+    path = "/api/health"

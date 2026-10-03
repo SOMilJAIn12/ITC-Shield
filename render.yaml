@@ -1,0 +1,22 @@
+# Render blueprint: ONE web service that serves the API and the built UI (simplest reliable setup).
+# Alternative: host the UI on Vercel/Netlify with VITE_API_BASE pointing at this service and set CORS_ORIGINS here.
+services:
+  - type: web
+    name: itc-shield
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: LLM_PROVIDER
+        value: groq
+      - key: GROQ_API_KEY
+        sync: false          # set in the Render dashboard; never committed
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      - key: CORS_ORIGINS
+        value: ""            # empty = same-origin UI served by this service; set when the UI lives elsewhere
