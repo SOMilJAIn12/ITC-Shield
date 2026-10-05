@@ -1,5 +1,8 @@
 https://github.com/user-attachments/assets/caafe89f-87a5-4775-ad6f-05fabe1a98b6
 
+![Uploading image.png…]()
+
+
 # ITC Shield
 
 **GST input-tax-credit risk intelligence: Detect → Quantify → Predict → Prioritize → Act.**
